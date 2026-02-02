@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+
+# Odoo
+.odoo/
+*.log
+*.pid
+addons/*/__pycache__/
+
+# Docker
+pgdata/
+odoo_data/
+
+# Env
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# Mac
+.DS_Store

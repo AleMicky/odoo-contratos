@@ -1,0 +1,15 @@
+<odoo>
+  <data>
+    <menuitem id="menu_contratos_root" name="Contratos" sequence="10"/>
+
+    <menuitem id="menu_contratos"
+              name="Contratos"
+              parent="menu_contratos_root"
+              action="action_contratos"/>
+
+    <menuitem id="menu_contratos_tipo"
+              name="Tipos de Contrato"
+              parent="menu_contratos_root"
+              action="action_contrato_tipos"/>
+  </data>
+</odoo>

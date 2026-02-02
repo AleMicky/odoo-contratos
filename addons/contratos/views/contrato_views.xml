@@ -1,0 +1,85 @@
+<odoo>
+  <data>
+
+    <!-- Secuencia -->
+    <record id="seq_contrato" model="ir.sequence">
+      <field name="name">Contratos</field>
+      <field name="code">contratos.contrato</field>
+      <field name="prefix">CT-</field>
+      <field name="padding">5</field>
+    </record>
+
+    <!-- LIST -->
+    <record id="view_contrato_list" model="ir.ui.view">
+      <field name="name">contratos.contrato.list</field>
+      <field name="model">contratos.contrato</field>
+      <field name="arch" type="xml">
+        <list decoration-danger="vence_pronto">
+          <field name="name"/>
+          <field name="titulo"/>
+          <field name="tipo_id"/>
+          <field name="partner_id"/>
+          <field name="fecha_inicio"/>
+          <field name="fecha_fin"/>
+          <field name="monto"/>
+          <field name="estado"/>
+        </list>
+      </field>
+    </record>
+
+    <!-- FORM -->
+    <record id="view_contrato_form" model="ir.ui.view">
+      <field name="name">contratos.contrato.form</field>
+      <field name="model">contratos.contrato</field>
+      <field name="arch" type="xml">
+        <form>
+          <header>
+            <button name="action_vigente" type="object"
+                    string="Marcar Vigente"
+                    invisible="estado != 'borrador'"/>
+            <button name="action_vencido" type="object"
+                    string="Marcar Vencido"
+                    invisible="estado != 'vigente'"/>
+            <button name="action_rescindir" type="object"
+                    string="Rescindir"
+                    invisible="estado == 'rescindido'"/>
+            <field name="estado" widget="statusbar"/>
+          </header>
+
+          <sheet>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="titulo"/>
+                <field name="tipo_id"/>
+                <field name="partner_id"/>
+              </group>
+              <group>
+                <field name="fecha_inicio"/>
+                <field name="fecha_fin"/>
+                <field name="monto"/>
+              </group>
+            </group>
+
+            <notebook>
+              <page string="Documentos">
+                <field name="documento_ids" widget="many2many_binary"/>
+              </page>
+              <page string="Notas">
+                <field name="notas"/>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- ACTION -->
+    <record id="action_contratos" model="ir.actions.act_window">
+      <field name="name">Contratos</field>
+      <field name="res_model">contratos.contrato</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
+  </data>
+</odoo>
