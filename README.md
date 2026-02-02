@@ -29,6 +29,8 @@ Módulo profesional de **gestión de contratos** desarrollado en **Odoo**, pensa
 ---
 
 ## 📁 Estructura del proyecto
+
+```text
 odoo-contratos/
 ├── docker-compose.yml
 ├── .env.example
@@ -36,12 +38,12 @@ odoo-contratos/
 │   └── odoo.conf
 ├── addons/
 │   └── contratos/
-│       ├── manifest.py
-│       ├── init.py
+│       ├── __manifest__.py
+│       ├── __init__.py
 │       ├── models/
 │       │   ├── contrato.py
 │       │   ├── contrato_tipo.py
-│       │   └── init.py
+│       │   └── __init__.py
 │       ├── views/
 │       │   ├── contrato_views.xml
 │       │   ├── contrato_tipo_views.xml
